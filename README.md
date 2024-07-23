@@ -79,6 +79,15 @@ Asegúrate de tener instalado lo siguiente en tu sistema:
 
 Ahora deberías poder acceder a tu aplicación en `http://localhost:8000` y al panel de administración de Open Admin en `http://localhost:8000/admin`.
 
+## Acceso al Panel de Administración
+
+Para acceder al panel de administración de Open Admin, utiliza las siguientes credenciales por defecto:
+
+- Usuario: admin
+- Contraseña: admin
+
+**Importante:** Por razones de seguridad, se recomienda cambiar estas credenciales inmediatamente después de tu primer inicio de sesión.
+
 ## Configuración adicional
 
 - Para personalizar Open Admin, consulta la [documentación oficial](https://open-admin.org/).
@@ -136,3 +145,5 @@ Si deseas contribuir a este proyecto, por favor [crea un pull request](URL_DEL_R
 ## Licencia
 
 Este proyecto está licenciado bajo la [Licencia MIT](https://opensource.org/licenses/MIT).
+
+## Create by: Fabian Alvarez
