@@ -7,60 +7,132 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Proyecto de Gestión de Tareas - Laravel 10 + Open Admin
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este proyecto es una aplicación de gestión de tareas desarrollada utilizando Laravel 10 y Open Admin, con MySQL como base de datos.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Descripción del Proyecto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+El sistema de Gestión de Tareas permite a los usuarios:
+- Crear, ver, actualizar y eliminar tareas
+- Filtrar tareas por título o descripción
+- Mostrar tareas completadas y no completadas mediante filtros
+- Gestionar tareas a través de una interfaz de administración intuitiva
 
-## Learning Laravel
+## Requisitos previos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Asegúrate de tener instalado lo siguiente en tu sistema:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- PHP 8.1 o superior
+- Composer
+- MySQL
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Pasos de instalación
 
-## Laravel Sponsors
+1. Clonar el repositorio:
+   ```
+   git clone [URL_DEL_REPOSITORIO]
+   cd [NOMBRE_DEL_PROYECTO]
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. Instalar dependencias de PHP:
+   ```
+   composer install
+   ```
 
-### Premium Partners
+3. Copiar el archivo de configuración:
+   ```
+   cp .env.example .env
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+4. Generar la clave de la aplicación:
+   ```
+   php artisan key:generate
+   ```
 
-## Contributing
+5. Configurar la base de datos:
+   Edita el archivo `.env` y configura los detalles de tu base de datos MySQL:
+   ```
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=nombre_de_tu_base_de_datos
+   DB_USERNAME=tu_usuario
+   DB_PASSWORD=tu_contraseña
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6. Ejecutar las migraciones:
+   ```
+   php artisan migrate
+   ```
 
-## Code of Conduct
+7. Instalar Open Admin:
+   ```
+   composer require open-admin-org/open-admin
+   php artisan admin:install
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+8. Iniciar el servidor de desarrollo:
+   ```
+   php artisan serve
+   ```
 
-## Security Vulnerabilities
+Ahora deberías poder acceder a tu aplicación en `http://localhost:8000` y al panel de administración de Open Admin en `http://localhost:8000/admin`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Configuración adicional
 
-## License
+- Para personalizar Open Admin, consulta la [documentación oficial](https://open-admin.org/).
+- Asegúrate de configurar los permisos y roles según las necesidades de tu aplicación.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## API Documentation
+
+Este proyecto incluye una API RESTful que puede ser probada utilizando el API Tester incorporado de Open Admin o herramientas externas como Postman.
+
+### Rutas de la API
+
+| Método HTTP | Ruta                | Descripción                           |
+|-------------|---------------------|---------------------------------------|
+| GET         | `/api/user`         | Obtener información del usuario actual|
+| GET         | `/api/v1/tareas`    | Obtener lista de tareas               |
+| POST        | `/api/v1/tareas`    | Crear una nueva tarea                 |
+| GET         | `/api/v1/tareas/{id}`| Obtener detalles de una tarea específica |
+| PUT         | `/api/v1/tareas/{id}`| Actualizar una tarea existente        |
+| DELETE      | `/api/v1/tareas/{id}`| Eliminar una tarea                    |
+| GET         | `/api/test`         | Ruta de prueba                        |
+
+### Uso del API Tester
+
+1. Accede al panel de administración de Open Admin.
+2. Navega a la sección "Api tester".
+3. Selecciona la ruta que deseas probar de la lista en el panel izquierdo.
+4. Configura los parámetros necesarios en la sección "Request".
+5. Si es necesario, proporciona credenciales de usuario en el campo "Login as".
+6. Haz clic en "Send" para realizar la petición.
+
+### Uso con Postman
+
+1. Importa la colección de API a Postman (si está disponible).
+2. Configura las variables de entorno necesarias (URL base, tokens de autenticación, etc.).
+3. Selecciona la petición que deseas realizar.
+4. Ajusta los parámetros, headers y body según sea necesario.
+5. Envía la petición y examina la respuesta.
+
+Nota: Asegúrate de incluir los headers de autenticación necesarios al realizar peticiones desde Postman o cualquier otro cliente HTTP externo.
+
+## Autenticación
+
+La API utiliza autenticación por token. Asegúrate de incluir el token de autenticación en el header de tus peticiones:
+
+```
+Authorization: Bearer [tu_token_aquí]
+```
+
+Para obtener un token de autenticación, debes iniciar sesión a través de la interfaz de usuario o utilizar el endpoint de login de la API.
+
+## Contribuir
+
+Si deseas contribuir a este proyecto, por favor [crea un pull request](URL_DEL_REPOSITORIO/pulls) o [reporta un issue](URL_DEL_REPOSITORIO/issues).
+
+## Licencia
+
+Este proyecto está licenciado bajo la [Licencia MIT](https://opensource.org/licenses/MIT).
